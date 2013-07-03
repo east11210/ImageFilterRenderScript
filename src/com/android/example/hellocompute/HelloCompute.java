@@ -44,7 +44,7 @@ public class HelloCompute extends Activity {
     setContentView(R.layout.main);
 
     mBitmapIn = loadBitmap(R.raw.data);
-    Bitmap overlay = loadBitmap(R.raw.lay_overlay);
+    Bitmap table = loadBitmap(R.raw.valencia_table);
     Log.d("size-----", String.valueOf(mBitmapIn.getWidth()));
     // mBitmapOut = Bitmap.createBitmap(mBitmapIn.getWidth(),
     // mBitmapIn.getHeight(), mBitmapIn.getConfig());
@@ -52,7 +52,7 @@ public class HelloCompute extends Activity {
     ImageView in = (ImageView) findViewById(R.id.displayin);
     in.setImageBitmap(mBitmapIn);
     // mBitmapOut = GuassianBlurRS.blur(this, mBitmapIn);
-    mBitmapOut = OverlayRS.blur(this, mBitmapIn, overlay);
+    mBitmapOut = FindTableRS.blur(this, mBitmapIn, table);
     ImageView out = (ImageView) findViewById(R.id.displayout);
     out.setImageBitmap(mBitmapOut);
     Log.d("time---", Long.toString(System.currentTimeMillis() - time));
