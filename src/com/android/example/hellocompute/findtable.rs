@@ -17,9 +17,9 @@ static const int kBlurWidth = 1;
 
 void root(const uchar4 *v_in, uchar4 *v_out, const void *usrData, uint32_t x, uint32_t y) {
 	v_out->a=(uchar)0xFF;
-	v_out->r=(table+((*v_in).r))->r;
-	v_out->g=(table+((*v_in).g))->g;
-	v_out->b=(table+((*v_in).b))->b;
+	v_out->r=(table+(*v_in).r)->r;
+	v_out->g=(table+(*v_in).g)->g;
+	v_out->b=(table+(*v_in).b)->b;
 }
 
 
