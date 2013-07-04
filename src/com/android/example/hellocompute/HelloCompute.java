@@ -52,7 +52,12 @@ public class HelloCompute extends Activity {
     ImageView in = (ImageView) findViewById(R.id.displayin);
     in.setImageBitmap(mBitmapIn);
     // mBitmapOut = GuassianBlurRS.blur(this, mBitmapIn);
-    mBitmapOut = FindTableRS.blur(this, mBitmapIn, table);
+    // mBitmapOut = FindTableRS.blur(this, mBitmapIn, table);
+    mBitmapOut = FastGuassianBlur.blur(this, mBitmapIn);
+    // mBitmapOut = FastGuassianBlur.blur(this, mBitmapOut);
+    // mBitmapOut = FastGuassianBlur.blur(this, mBitmapOut);
+    // mBitmapOut = FastGuassianBlur.blur(this, mBitmapOut);
+    // mBitmapOut = FastGuassianBlur.blur(this, mBitmapOut);
     ImageView out = (ImageView) findViewById(R.id.displayout);
     out.setImageBitmap(mBitmapOut);
     Log.d("time---", Long.toString(System.currentTimeMillis() - time));
