@@ -10,15 +10,15 @@ import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
 import android.renderscript.Type;
 
-public class RSFilterAgent {
+public class RSFilterEngine {
 
   private RenderScript rs;
   private Context context;
 
   private List<BaseRSFilter<?>> filters = new ArrayList<BaseRSFilter<?>>();
 
-  public static RSFilterAgent getAgent(Context context) {
-    return new RSFilterAgent(context);
+  public static RSFilterEngine getInstance(Context context) {
+    return new RSFilterEngine(context);
   }
 
   public RSFilterResult addFilter(BaseRSFilter<?> filter) {
@@ -39,7 +39,7 @@ public class RSFilterAgent {
     return getBitmapFromAllocation(filter.getResult());
   }
 
-  private RSFilterAgent(Context context) {
+  private RSFilterEngine(Context context) {
     rs = RenderScript.create(context);
     this.context = context;
   }

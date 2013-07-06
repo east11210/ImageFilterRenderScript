@@ -18,13 +18,14 @@ public class GuassianBlurRSFilter extends BaseRSFilter<ScriptC_convolutionint> {
 
   @Override
   protected Allocation onProcessImage(Context context, RenderScript rs) {
-    ScriptC_convolutionint convolution = getScript();
-    Allocation in = getAllocation(context, rs, ORIGIN);
     Allocation blur = Allocation.createSized(rs, Element.I32(rs), 9,
         Allocation.USAGE_SCRIPT);
-    blur.copyFromUnchecked(BLUR);
-    Allocation out = Allocation.createTyped(rs, in.getType());
+    blur.copyFrom(BLUR);
+    ScriptC_convolutionint convolution = getScript();
     convolution.bind_convolution_factors(blur);
+    Allocation in = getAllocation(context, rs, ORIGIN);
+    convolution.bind_gPixels(in);
+    Allocation out = Allocation.createTyped(rs, in.getType());
     convolution.invoke_filter(convolution, in, out);
     return out;
   }
