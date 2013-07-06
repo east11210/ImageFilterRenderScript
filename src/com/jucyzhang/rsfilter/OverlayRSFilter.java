@@ -23,7 +23,7 @@ public class OverlayRSFilter extends BaseRSFilter<ScriptC_overlay> {
 
   @Override
   protected ScriptC_overlay onCreateScript(Context context, RenderScript rs) {
-    return new ScriptC_overlay(rs, context.getResources(), R.raw.overlay);
+    return new ScriptC_overlay(rs);
   }
 
 }
