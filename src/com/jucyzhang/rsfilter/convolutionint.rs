@@ -4,7 +4,7 @@
 static int mImageWidth;
 static int mImageHeight;
 const uchar4 *gPixels;
-const uint32_t* convolution_factors;
+const int32_t* convolution_factors;
 
 void init() {
 }
@@ -16,6 +16,7 @@ void root(const uchar4 *v_in, uchar4 *v_out, const void *usrData, uint32_t x, ui
 
 	uint32_t sum_factors=0;
 	uint4 tep=0;
+	uint32_t* con_factors=(uint32_t*)convolution_factors;
 	
 	//uint32_t currentPos=x+y*mImageWidth;
 	//x = currentPos%mImageWidth;
@@ -30,7 +31,7 @@ void root(const uchar4 *v_in, uchar4 *v_out, const void *usrData, uint32_t x, ui
 			if(now_x<0||now_x>=mImageHeight||now_y<0||now_y>=mImageWidth){
 			
 			}else{
-				factor = convolution_factors[i+kBlurWidth+(j+kBlurWidth)*kBlurTotalWidth];
+				factor = con_factors[i+kBlurWidth+(j+kBlurWidth)*kBlurTotalWidth];
 				tep+=convert_uint4(gPixels[now_x+now_y*mImageWidth])*factor;
 				sum_factors+=factor;
 			}

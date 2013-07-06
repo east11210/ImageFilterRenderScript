@@ -22,8 +22,8 @@ public class GuassianBlurRSFilter extends BaseRSFilter<ScriptC_convolutionint> {
     Allocation in = getAllocation(context, rs, ORIGIN);
     Allocation blur = Allocation.createSized(rs, Element.I32(rs), 9,
         Allocation.USAGE_SCRIPT);
+    blur.copyFromUnchecked(BLUR);
     Allocation out = Allocation.createTyped(rs, in.getType());
-    blur.copyFrom(BLUR);
     convolution.bind_convolution_factors(blur);
     convolution.invoke_filter(convolution, in, out);
     return out;
