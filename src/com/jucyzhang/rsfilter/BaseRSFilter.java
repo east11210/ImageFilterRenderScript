@@ -9,7 +9,7 @@ import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptC;
 
-public abstract class BaseRSFilter<T extends ScriptC> {
+abstract class BaseRSFilter<T extends ScriptC>{
 
   private Allocation result;
   private T script;
