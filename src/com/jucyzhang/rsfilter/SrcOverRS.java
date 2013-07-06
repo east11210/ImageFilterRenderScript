@@ -1,4 +1,4 @@
-package com.android.example.hellocompute;
+package com.jucyzhang.rsfilter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -6,6 +6,8 @@ import android.graphics.Bitmap.Config;
 import android.renderscript.Allocation;
 import android.renderscript.Allocation.MipmapControl;
 import android.renderscript.RenderScript;
+
+import com.android.example.hellocompute.R;
 
 public class SrcOverRS {
   public static Bitmap blur(Context context, Bitmap src, Bitmap dst) {

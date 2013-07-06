@@ -1,5 +1,5 @@
 #pragma version(1)
-#pragma rs java_package_name(com.android.example.hellocompute)
+#pragma rs java_package_name(com.jucyzhang.rsfilter)
 
 static int mImageWidth;
 const uchar4 *dst;

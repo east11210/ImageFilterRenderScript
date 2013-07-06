@@ -15,7 +15,7 @@
  */
 
 #pragma version(1)
-#pragma rs java_package_name(com.android.example.hellocompute)
+#pragma rs java_package_name(com.jucyzhang.rsfilter)
 
 rs_allocation gIn;
 rs_allocation gOut;

@@ -1,4 +1,4 @@
-package com.android.example.hellocompute;
+package com.jucyzhang.rsfilter;
 
 import java.util.Map;
 
@@ -8,8 +8,7 @@ import android.renderscript.Allocation;
 import android.renderscript.BaseObj;
 import android.renderscript.RenderScript;
 
-public abstract class BaseRSFilter<T extends BaseObj> implements
-    FutureAllocation {
+public abstract class BaseRSFilter<T extends BaseObj>{
 
   private Allocation result;
 
@@ -18,11 +17,6 @@ public abstract class BaseRSFilter<T extends BaseObj> implements
   protected abstract Allocation onProcessImage(Context context, RenderScript rs);
 
   public abstract void onDestroy(Context context, RenderScript rs);
-
-  @Override
-  public final Allocation getFutureAllocation(Context context, RenderScript rs) {
-    return result;
-  }
 
   protected final Allocation getAllocation(Context context, RenderScript rs,
       String key) {

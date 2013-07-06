@@ -1,4 +1,4 @@
-package com.android.example.hellocompute;
+package com.jucyzhang.rsfilter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -7,6 +7,8 @@ import android.renderscript.Allocation;
 import android.renderscript.Allocation.MipmapControl;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
+
+import com.android.example.hellocompute.R;
 
 public class FastGuassianBlur {
   private static final int[] BLUR = { 1, 2, 1, 2, 4, 2, 1, 2, 1 };

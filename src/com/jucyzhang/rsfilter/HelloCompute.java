@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.example.hellocompute;
+package com.jucyzhang.rsfilter;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,6 +28,8 @@ import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
 import android.util.Log;
 import android.widget.ImageView;
+
+import com.android.example.hellocompute.R;
 
 public class HelloCompute extends Activity {
   private Bitmap mBitmapIn;

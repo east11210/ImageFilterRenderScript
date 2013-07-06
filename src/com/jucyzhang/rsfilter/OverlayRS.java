@@ -1,8 +1,10 @@
-package com.android.example.hellocompute;
+package com.jucyzhang.rsfilter;
 
 import android.content.Context;
 import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
+
+import com.android.example.hellocompute.R;
 
 public class OverlayRS extends BaseRSFilter<ScriptC_overlay> {
 
