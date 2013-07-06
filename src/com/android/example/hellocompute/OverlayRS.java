@@ -1,27 +1,30 @@
 package com.android.example.hellocompute;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
-import android.renderscript.Allocation.MipmapControl;
 
-public class OverlayRS {
-  public static Bitmap blur(Context context, Bitmap dst, Bitmap src) {
-    RenderScript rs = RenderScript.create(context);
-    Allocation dstAll = Allocation.createFromBitmap(rs, dst,
-        MipmapControl.MIPMAP_NONE, Allocation.USAGE_SCRIPT);
-    Allocation srcAll = Allocation.createFromBitmap(rs, src,
-        MipmapControl.MIPMAP_NONE, Allocation.USAGE_SCRIPT);
-    Allocation outAll = Allocation.createTyped(rs, dstAll.getType());
+public class OverlayRS extends BaseRSFilter<ScriptC_overlay> {
+
+  public static final String DST = "dst";
+  public static final String SRC = "src";
+
+  @Override
+  protected Allocation onProcessImage(Context context, RenderScript rs) {
     ScriptC_overlay overlay = new ScriptC_overlay(rs, context.getResources(),
         R.raw.overlay);
+    Allocation dstAll = getAllocation(context, rs, DST);
+    Allocation srcAll = getAllocation(context, rs, SRC);
+    Allocation outAll = Allocation.createTyped(rs, dstAll.getType());
     overlay.bind_dst(dstAll);
     overlay.bind_src(srcAll);
     overlay.invoke_filter(overlay, dstAll, outAll);
-    Bitmap res = Bitmap.createBitmap(dst.getWidth(), dst.getHeight(),
-        Bitmap.Config.ARGB_8888);
-    outAll.copyTo(res);
-    return res;
+    return outAll;
   }
+
+  @Override
+  public void onDestroy(Context context, RenderScript rs) {
+    
+  }
+
 }
