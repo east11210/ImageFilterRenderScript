@@ -6,8 +6,6 @@ import android.renderscript.Allocation;
 import android.renderscript.Allocation.MipmapControl;
 import android.renderscript.RenderScript;
 
-import com.android.example.hellocompute.R;
-
 public class GuassianBlurRS {
   public static Bitmap blur(Context context, Bitmap bitmap) {
     RenderScript rs = RenderScript.create(context);

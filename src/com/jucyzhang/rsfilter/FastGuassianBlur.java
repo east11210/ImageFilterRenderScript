@@ -8,8 +8,6 @@ import android.renderscript.Allocation.MipmapControl;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
 
-import com.android.example.hellocompute.R;
-
 public class FastGuassianBlur {
   private static final int[] BLUR = { 1, 2, 1, 2, 4, 2, 1, 2, 1 };
 

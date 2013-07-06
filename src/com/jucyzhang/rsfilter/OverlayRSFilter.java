@@ -4,17 +4,14 @@ import android.content.Context;
 import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
 
-import com.android.example.hellocompute.R;
-
-public class OverlayRS extends BaseRSFilter<ScriptC_overlay> {
+public class OverlayRSFilter extends BaseRSFilter<ScriptC_overlay> {
 
   public static final String DST = "dst";
   public static final String SRC = "src";
 
   @Override
   protected Allocation onProcessImage(Context context, RenderScript rs) {
-    ScriptC_overlay overlay = new ScriptC_overlay(rs, context.getResources(),
-        R.raw.overlay);
+    ScriptC_overlay overlay = getScript();
     Allocation dstAll = getAllocation(context, rs, DST);
     Allocation srcAll = getAllocation(context, rs, SRC);
     Allocation outAll = Allocation.createTyped(rs, dstAll.getType());
@@ -25,8 +22,8 @@ public class OverlayRS extends BaseRSFilter<ScriptC_overlay> {
   }
 
   @Override
-  public void onDestroy(Context context, RenderScript rs) {
-    
+  protected ScriptC_overlay onCreateScript(Context context, RenderScript rs) {
+    return new ScriptC_overlay(rs, context.getResources(), R.raw.overlay);
   }
 
 }
