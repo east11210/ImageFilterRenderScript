@@ -21,7 +21,7 @@ public class RSFilterEngine {
     return new RSFilterEngine(context);
   }
 
-  public RSFutureAllocation addFilter(RSFilter filter) {
+  public RSFilterResult addFilter(RSFilter filter) {
     filters.add(filter);
     return new FutureAllocationWrapper(filter);
   }
@@ -52,7 +52,7 @@ public class RSFilterEngine {
     return bitmap;
   }
 
-  private static class FutureAllocationWrapper implements RSFutureAllocation {
+  private static class FutureAllocationWrapper implements RSFilterResult {
     private RSFilter filter;
 
     public FutureAllocationWrapper(RSFilter filter) {

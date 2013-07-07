@@ -4,6 +4,6 @@ import android.content.Context;
 import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
 
-public interface RSFutureAllocation {
+interface FutureAllocation {
   Allocation getFutureAllocation(Context context, RenderScript rs);
 }

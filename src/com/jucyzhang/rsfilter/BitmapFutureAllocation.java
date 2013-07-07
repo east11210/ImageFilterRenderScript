@@ -6,14 +6,14 @@ import android.renderscript.Allocation;
 import android.renderscript.Allocation.MipmapControl;
 import android.renderscript.RenderScript;
 
-class BitmapFutureAllocation implements RSFutureAllocation {
+class BitmapFutureAllocation implements FutureAllocation {
 
   private Bitmap bitmap;
 
   private BitmapFutureAllocation() {
   }
 
-  static RSFutureAllocation create(Bitmap bitmap) {
+  static FutureAllocation create(Bitmap bitmap) {
     BitmapFutureAllocation a = new BitmapFutureAllocation();
     a.bitmap = bitmap;
     return a;

@@ -16,7 +16,7 @@ public abstract class RSFilter {
   public static final String TABLE = "table";
 
   private Allocation result;
-  private Map<String, RSFutureAllocation> map = new HashMap<String, RSFutureAllocation>();
+  private Map<String, FutureAllocation> map = new HashMap<String, FutureAllocation>();
 
   /**
    * Process Image in this method.
@@ -42,13 +42,13 @@ public abstract class RSFilter {
     return this;
   }
 
-  public final RSFilter setAllocation(String key, RSFutureAllocation value) {
+  public final RSFilter setAllocation(String key, RSFilterResult value) {
     map.put(key, value);
     return this;
   }
 
-  public final RSFilter setRawAllocation(String key, int id) {
-    map.put(key, LazyLoadBitmapFutureAllocation.fromRaw(id));
+  public final RSFilter setAllocation(String key, int rawId) {
+    map.put(key, LazyLoadBitmapFutureAllocation.fromRaw(rawId));
     return this;
   }
 
@@ -58,7 +58,7 @@ public abstract class RSFilter {
   }
 
   final Allocation getAllocation(Context context, RenderScript rs, String key) {
-    RSFutureAllocation future = map.get(key);
+    FutureAllocation future = map.get(key);
     if (future == null) {
       return null;
     } else {
