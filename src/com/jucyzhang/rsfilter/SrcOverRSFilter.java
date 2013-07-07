@@ -4,10 +4,7 @@ import android.content.Context;
 import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
 
-public class SrcOverRSFilter extends BaseRSFilter<ScriptC_srcover> {
-
-  public static final String SRC = "src";
-  public static final String DST = "dst";
+class SrcOverRSFilter extends BaseRSFilter<ScriptC_srcover> {
 
   @Override
   protected ScriptC_srcover onCreateScript(Context context, RenderScript rs) {

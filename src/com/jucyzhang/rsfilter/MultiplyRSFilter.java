@@ -4,10 +4,7 @@ import android.content.Context;
 import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
 
-public class MultiplyRSFilter extends BaseRSFilter<ScriptC_multiply> {
-
-  public static final String DST = "dst";
-  public static final String SRC = "src";
+class MultiplyRSFilter extends BaseRSFilter<ScriptC_multiply> {
 
   @Override
   protected ScriptC_multiply onCreateScript(Context context, RenderScript rs) {

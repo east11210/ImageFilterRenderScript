@@ -4,10 +4,7 @@ import android.content.Context;
 import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
 
-public class OverlayRSFilter extends BaseRSFilter<ScriptC_overlay> {
-
-  public static final String DST = "dst";
-  public static final String SRC = "src";
+class OverlayRSFilter extends BaseRSFilter<ScriptC_overlay> {
 
   @Override
   protected Allocation onProcessImage(Context context, RenderScript rs) {

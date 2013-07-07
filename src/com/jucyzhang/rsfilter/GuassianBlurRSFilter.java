@@ -5,10 +5,8 @@ import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
 
-public class GuassianBlurRSFilter extends BaseRSFilter<ScriptC_convolutionint> {
+class GuassianBlurRSFilter extends BaseRSFilter<ScriptC_convolutionint> {
   private static final int[] BLUR = { 1, 2, 1, 2, 4, 2, 1, 2, 1 };
-
-  public static final String ORIGIN = "origin";
 
   @Override
   protected ScriptC_convolutionint onCreateScript(Context context,
@@ -23,7 +21,7 @@ public class GuassianBlurRSFilter extends BaseRSFilter<ScriptC_convolutionint> {
     blur.copyFrom(BLUR);
     ScriptC_convolutionint convolution = getScript();
     convolution.bind_convolution_factors(blur);
-    Allocation in = getAllocation(context, rs, ORIGIN);
+    Allocation in = getAllocation(context, rs, ORIGINAL);
     convolution.bind_gPixels(in);
     Allocation out = Allocation.createTyped(rs, in.getType());
     convolution.invoke_filter(convolution, in, out);

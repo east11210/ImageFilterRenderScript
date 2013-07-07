@@ -4,10 +4,7 @@ import android.content.Context;
 import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
 
-public class FindTableRSFilter extends BaseRSFilter<ScriptC_findtable> {
-
-  public static final String ORIGINAL = "original";
-  public static final String TABLE = "table";
+class FindTableRSFilter extends BaseRSFilter<ScriptC_findtable> {
 
   @Override
   protected ScriptC_findtable onCreateScript(Context context, RenderScript rs) {

@@ -10,6 +10,11 @@ import android.renderscript.RenderScript;
 
 public abstract class RSFilter {
 
+  public static final String SRC = "src";
+  public static final String DST = "dst";
+  public static final String ORIGINAL = "original";
+  public static final String TABLE = "table";
+
   private Allocation result;
   private Map<String, RSFutureAllocation> map = new HashMap<String, RSFutureAllocation>();
 

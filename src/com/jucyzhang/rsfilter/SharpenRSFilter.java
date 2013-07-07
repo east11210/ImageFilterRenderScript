@@ -5,10 +5,9 @@ import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
 
-public class SharpenRSFilter extends BaseRSFilter<ScriptC_convolutionint> {
+class SharpenRSFilter extends BaseRSFilter<ScriptC_convolutionint> {
 
   private static final int[] FACTOR = { 0, -1, 0, -1, 5, -1, 0, -1, 0 };
-  public static final String ORIGIN = "origin";
 
   @Override
   protected ScriptC_convolutionint onCreateScript(Context context,
@@ -18,7 +17,7 @@ public class SharpenRSFilter extends BaseRSFilter<ScriptC_convolutionint> {
 
   @Override
   protected Allocation onProcessImage(Context context, RenderScript rs) {
-    Allocation origin = getAllocation(context, rs, ORIGIN);
+    Allocation origin = getAllocation(context, rs, ORIGINAL);
     ScriptC_convolutionint convolution = getScript();
     Allocation factor = Allocation.createSized(rs, Element.I32(rs), 9,
         Allocation.USAGE_SCRIPT);
