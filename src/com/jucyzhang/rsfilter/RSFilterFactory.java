@@ -81,4 +81,7 @@ public class RSFilterFactory {
     return filter.get();
   }
 
+  private RSFilterFactory() {
+  }
+
 }
