@@ -15,20 +15,20 @@ public class RSFilterEngine {
   private RenderScript rs;
   private Context context;
 
-  private List<BaseRSFilter<?>> filters = new ArrayList<BaseRSFilter<?>>();
+  private List<RSFilter> filters = new ArrayList<RSFilter>();
 
   public static RSFilterEngine getInstance(Context context) {
     return new RSFilterEngine(context);
   }
 
-  public RSFilterResult addFilter(BaseRSFilter<?> filter) {
+  public RSFutureAllocation addFilter(RSFilter filter) {
     filters.add(filter);
     return new FutureAllocationWrapper(filter);
   }
 
   public Bitmap compute() {
-    ListIterator<BaseRSFilter<?>> iterator = filters.listIterator();
-    BaseRSFilter<?> filter = null;
+    ListIterator<RSFilter> iterator = filters.listIterator();
+    RSFilter filter = null;
     while (iterator.hasNext()) {
       filter = iterator.next();
       filter.createScript(context, rs);
@@ -52,10 +52,10 @@ public class RSFilterEngine {
     return bitmap;
   }
 
-  private static class FutureAllocationWrapper implements RSFilterResult {
-    private BaseRSFilter<?> filter;
+  private static class FutureAllocationWrapper implements RSFutureAllocation {
+    private RSFilter filter;
 
-    public FutureAllocationWrapper(BaseRSFilter<?> filter) {
+    public FutureAllocationWrapper(RSFilter filter) {
       this.filter = filter;
     }
 

@@ -10,18 +10,18 @@ import android.renderscript.Allocation;
 import android.renderscript.Allocation.MipmapControl;
 import android.renderscript.RenderScript;
 
-class LazyLoadBitmapFutureAllocation implements RSFilterResult {
+class LazyLoadBitmapFutureAllocation implements RSFutureAllocation {
 
   private int rawId = -1;
   private int drawableId = -1;
 
-  static RSFilterResult fromRaw(int id) {
+  static RSFutureAllocation fromRaw(int id) {
     LazyLoadBitmapFutureAllocation a = new LazyLoadBitmapFutureAllocation();
     a.rawId = id;
     return a;
   }
 
-  static RSFilterResult fromDrawable(int id) {
+  static RSFutureAllocation fromDrawable(int id) {
     LazyLoadBitmapFutureAllocation a = new LazyLoadBitmapFutureAllocation();
     a.drawableId = id;
     return a;
