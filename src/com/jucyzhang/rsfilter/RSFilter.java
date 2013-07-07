@@ -23,18 +23,6 @@ public abstract class RSFilter {
   private Map<String, FutureAllocation> map = new HashMap<String, FutureAllocation>();
 
   /**
-   * Set a bitmap as input.
-   * 
-   * @param key
-   * @param bitmap
-   * @return filter itself for chain calling.
-   */
-  public final RSFilter setAllocation(String key, Bitmap bitmap) {
-    map.put(key, BitmapFutureAllocation.create(bitmap));
-    return this;
-  }
-
-  /**
    * Set the Result of any other filters as input.
    * 
    * @param key
@@ -55,6 +43,18 @@ public abstract class RSFilter {
    */
   public final RSFilter setAllocation(String key, int rawId) {
     map.put(key, LazyLoadBitmapFutureAllocation.fromRaw(rawId));
+    return this;
+  }
+
+  /**
+   * Set a bitmap as input.
+   * 
+   * @param key
+   * @param bitmap
+   * @return filter itself for chain calling.
+   */
+  public final RSFilter setAllocation(String key, Bitmap bitmap) {
+    map.put(key, BitmapFutureAllocation.create(bitmap));
     return this;
   }
 
