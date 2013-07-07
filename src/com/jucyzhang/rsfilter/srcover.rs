@@ -2,7 +2,7 @@
 #pragma rs java_package_name(com.jucyzhang.rsfilter)
 
 const uchar4 *dst;
-const uint32_t white=(uint32_t)255;
+static const uint32_t white=(uint32_t)255;
 static int mImageWidth;
 
 void init() {

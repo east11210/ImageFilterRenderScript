@@ -4,10 +4,10 @@
 static int mImageWidth;
 const uchar4 *gPixels;
 
-const float4 kWhite = {
+static const float4 kWhite = {
     1.0f, 1.0f, 1.0f, 1.0f
 };
-const float4 kBlack = {
+static const float4 kBlack = {
     0.0f, 0.0f, 0.0f, 1.0f
 };
 

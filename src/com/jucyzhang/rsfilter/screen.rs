@@ -3,7 +3,7 @@
 
 const uchar4 *src;
 static int mImageWidth;
-const uint32_t white=(uint32_t)255;
+static const uint32_t white=(uint32_t)255;
 
 const float4 kWhite = {
     1.0f, 1.0f, 1.0f, 1.0f

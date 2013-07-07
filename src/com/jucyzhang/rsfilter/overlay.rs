@@ -5,13 +5,6 @@ static int mImageWidth;
 const uchar4 *dst;
 const uchar4 *src;
 
-const float4 kWhite = {
-    1.0f, 1.0f, 1.0f, 1.0f
-};
-const float4 kBlack = {
-    0.0f, 0.0f, 0.0f, 1.0f
-};
-
 void init() {
 }
 

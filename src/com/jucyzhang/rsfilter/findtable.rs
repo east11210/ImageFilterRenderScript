@@ -3,13 +3,6 @@
 
 const uchar4 *table;
 
-const float4 kWhite = {
-    1.0f, 1.0f, 1.0f, 1.0f
-};
-const float4 kBlack = {
-    0.0f, 0.0f, 0.0f, 1.0f
-};
-
 void init() {
 }
 
