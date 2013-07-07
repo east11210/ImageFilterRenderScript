@@ -10,7 +10,7 @@ import android.renderscript.Allocation;
 import android.renderscript.Allocation.MipmapControl;
 import android.renderscript.RenderScript;
 
-class LazyLoadBitmapFutureAllocation implements FutureAllocation {
+class LazyLoadBitmapFutureAllocation extends FutureAllocation {
 
   private int rawId = -1;
   private int drawableId = -1;

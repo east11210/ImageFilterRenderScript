@@ -1,6 +1,15 @@
 package com.jucyzhang.rsfilter;
 
+/**
+ * Factory for all supported @{code RSFilter}
+ * 
+ * @author jucyzhang
+ * 
+ */
 public class RSFilterFactory {
+  /**
+   * All currently supported filters
+   */
   public enum Filters {
     /**
      * @required ORIGINAL & TABLE

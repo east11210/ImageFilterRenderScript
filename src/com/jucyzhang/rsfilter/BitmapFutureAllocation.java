@@ -6,7 +6,7 @@ import android.renderscript.Allocation;
 import android.renderscript.Allocation.MipmapControl;
 import android.renderscript.RenderScript;
 
-class BitmapFutureAllocation implements FutureAllocation {
+class BitmapFutureAllocation extends FutureAllocation {
 
   private Bitmap bitmap;
 

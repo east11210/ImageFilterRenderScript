@@ -10,6 +10,14 @@ import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
 import android.renderscript.Type;
 
+/**
+ * Engine of RSFilters.
+ * 
+ * @usage Simply follow three steps: getInstance() -> addFilter() -> compute()
+ * 
+ * @author jucyzhang
+ * 
+ */
 public class RSFilterEngine {
 
   private RenderScript rs;
@@ -17,15 +25,34 @@ public class RSFilterEngine {
 
   private List<RSFilter> filters = new ArrayList<RSFilter>();
 
+  /**
+   * create a new instance of RSFilterEngine.
+   * 
+   * @param context
+   * @return
+   */
   public static RSFilterEngine getInstance(Context context) {
     return new RSFilterEngine(context);
   }
 
+  /**
+   * add a filter to the engine.
+   * 
+   * @param filter
+   * @return a RSFilterResult object holding future result of the filter. If you
+   *         don't need the result anymore, clear the reference immediately for
+   *         memory performance.
+   */
   public RSFilterResult addFilter(RSFilter filter) {
     filters.add(filter);
     return new FutureAllocationWrapper(filter);
   }
 
+  /**
+   * compute all filters inside the engine
+   * 
+   * @return result Bitmap of the ***LAST*** filter in the engine.
+   */
   public Bitmap compute() {
     ListIterator<RSFilter> iterator = filters.listIterator();
     RSFilter filter = null;
@@ -37,6 +64,21 @@ public class RSFilterEngine {
       iterator.remove();
     }
     return getBitmapFromAllocation(filter.getResult());
+  }
+
+  /**
+   * retrieve the result inside the RSFilterResult
+   * 
+   * @param result
+   * @return the result Bitmap of filter.
+   */
+  public Bitmap getBitmapFromResult(RSFilterResult result) {
+    Allocation a = result.getFutureAllocation();
+    if (a != null) {
+      return getBitmapFromAllocation(a);
+    } else {
+      return null;
+    }
   }
 
   private RSFilterEngine(Context context) {
@@ -52,15 +94,15 @@ public class RSFilterEngine {
     return bitmap;
   }
 
-  private static class FutureAllocationWrapper implements RSFilterResult {
+  private static class FutureAllocationWrapper extends RSFilterResult {
     private RSFilter filter;
 
-    public FutureAllocationWrapper(RSFilter filter) {
+    FutureAllocationWrapper(RSFilter filter) {
       this.filter = filter;
     }
 
     @Override
-    public Allocation getFutureAllocation(Context context, RenderScript rs) {
+    Allocation getFutureAllocation() {
       return filter.getResult();
     }
   }
